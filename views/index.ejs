@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello , World <%= user %></h1>
+    <h2>Your Subscribers List</h2>
+    <a  href="/subsPage">Subsriptions</a>
+    <br>
+    <br>
+    <h2>Creaters</h2>
+    <% for (let creaters of usernames){ %>     
+        <% if(userSubscribed.includes(creaters._id)){%> 
+        <form action='/unsubscribe/<%= creaters._id%>' method="POST">
+        <lable><%=creaters.user_name%></lable>
+        <button>UnSubscribe</button>
+        </form>
+        <br>
+        <%}else{%>
+        <form action='/subscribe/<%= creaters._id %>' method="POST">
+            <lable><%=creaters.user_name%></lable>
+            <button>Subscribe</button>
+            </form>
+            <br>     
+            <%}%>
+    <%}%>
+    <form action="/logout?_method=DELETE" method="POST">
+    <button type="submit">LOGOUT</button>
+    </form>
+</body>
+</html>
